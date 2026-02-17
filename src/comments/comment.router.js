@@ -3,13 +3,9 @@
 import { Router } from 'express';
 import { check } from 'express-validator';
 import { addComment, updateComment, deleteComment } from './comment.controller.js';
-import { validarJWT } from '../../middlewares/validate-jwt.js';
 import { validarCampos } from '../../middlewares/check-validators.js';
 
 const router = Router();
-
-// Todas las acciones de comentarios requieren estar logueado
-router.use(validarJWT);
 
 // Agregar comentario
 router.post('/', [

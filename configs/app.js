@@ -6,7 +6,6 @@ import morgan from 'morgan';
 import helmet from 'helmet';
 import { dbConnection } from './db.js';
 import { errorHandler } from '../middlewares/handle-errors.js';
-import { validarJWT } from '../middlewares/validate-jwt.js';
 import { requestLimit } from '../middlewares/request-limit.js';
 import { corsOptions } from './cors-configuration.js';
 
@@ -21,7 +20,6 @@ const middlewares = (app) => {
     app.use(helmet());
     app.use(cors(corsOptions));
     app.use(requestLimit);
-    app.use(validarJWT);
     app.use(express.urlencoded({ extended: false, limit: '10mb' }));
     app.use(express.json({ limit: '10mb' }));
     app.use(morgan('dev'));
