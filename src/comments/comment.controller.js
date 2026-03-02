@@ -2,6 +2,27 @@
 
 import Comment from './comment.model.js';
 
+// Obtener comentarios de una publicación
+export const getComments = async (req, res) => {
+    try {
+        const comments = await Comment.find()
+            .populate('author', 'username') // Trae el nombre del autor
+            .populate('post', 'title');    // Trae el título del post
+
+        res.status(200).json({
+            success: true,
+            total: comments.length,
+            comments
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: 'Error al obtener los comentarios',
+            error: error.message
+        });
+    }
+};
+
 // Agregar un comentario
 export const addComment = async (req, res) => {
     try {

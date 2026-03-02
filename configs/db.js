@@ -61,7 +61,7 @@ export const dbConnection = async () => {
     };
 
     // Manejadores de señales de proceso
-    process.on('SIGINT', () => gracefulShutdown('SIGINT'));   // Ctrl+C
-    process.on('SIGTERM', () => gracefulShutdown('SIGTERM')); // Terminación de sistema
-    process.on('SIGUSR2', () => gracefulShutdown('SIGUSR2')); // Reinicio de nodemon
+    process.on('SIGINT', () => gracefulShutdown('SIGINT'));   
+    process.on('SIGTERM', () => gracefulShutdown('SIGTERM')); 
+    process.on('SIGUSR2', () => gracefulShutdown('SIGUSR2')); 
 };

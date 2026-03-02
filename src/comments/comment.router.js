@@ -2,10 +2,14 @@
 
 import { Router } from 'express';
 import { check } from 'express-validator';
-import { addComment, updateComment, deleteComment } from './comment.controller.js';
+import { addComment, updateComment, deleteComment, getComments } from './comment.controller.js';
 import { validarCampos } from '../../middlewares/check-validators.js';
 
 const router = Router();
+
+
+// Obtener comentarios
+router.get('/', getComments);
 
 // Agregar comentario
 router.post('/', [
